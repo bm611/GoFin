@@ -4,7 +4,6 @@ import (
 	"os"
 
 	"github.com/bm611/gofin/internal/api"
-	"github.com/bm611/gofin/internal/ui"
 	"github.com/spf13/cobra"
 )
 
@@ -17,8 +16,9 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		api.FetchStockPrice()
-		ui.StartTea()
+		symbols := []string{"AAPL", "MSFT", "GOOGL"}
+		api.FetchStockPrice(symbols)
+		// ui.StartTea()
 	},
 }
 
