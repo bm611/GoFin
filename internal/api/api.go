@@ -9,7 +9,6 @@ import (
 )
 
 func FetchStockPrice(symbols []string) []StockQuote {
-	fmt.Println("Fetching stock prices...")
 	var stockQuotes []StockQuote
 	apiKey := os.Getenv("TWELVE_DATA_API_KEY")
 
@@ -34,12 +33,6 @@ func FetchStockPrice(symbols []string) []StockQuote {
 			fmt.Printf("Error unmarshaling data for %s: %v\n", symbol, err)
 			continue
 		}
-
-		fmt.Printf("\nStock Quote for %s:\n", symbol)
-		fmt.Printf("Symbol: %s\n", stockPrice.Symbol)
-		fmt.Printf("Price: %s\n", stockPrice.Close)
-		fmt.Printf("Change: %s\n", stockPrice.Change)
-		fmt.Printf("Volume: %s\n", stockPrice.Volume)
 
 		stockQuotes = append(stockQuotes, stockPrice)
 	}
